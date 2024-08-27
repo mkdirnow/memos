@@ -59,14 +59,6 @@ const MemoResourceListView = ({ resources = [] }: { resources: Resource[] }) => 
   const MediaList = ({ resources = [] }: { resources: Resource[] }) => {
     if (resources.length === 0) return <></>;
 
-    if (resources.length === 1) {
-      return (
-        <div className="max-w-full flex justify-center items-center border dark:border-zinc-800 rounded overflow-hidden hide-scrollbar hover:shadow-md">
-          <MediaCard resource={mediaResources[0]} />
-        </div>
-      );
-    }
-
     const cards = resources.map((resource) => (
       <SquareDiv
         key={resource.name}
@@ -76,11 +68,30 @@ const MemoResourceListView = ({ resources = [] }: { resources: Resource[] }) => 
       </SquareDiv>
     ));
 
-    if (resources.length === 2 || resources.length === 4) {
-      return <div className="w-full grid gap-2 grid-cols-2">{cards}</div>;
-    }
+    return <div className="w-full grid gap-2 grid-cols-3">{cards}</div>;
 
-    return <div className="w-full grid gap-2 grid-cols-2 sm:grid-cols-3">{cards}</div>;
+    // if (resources.length === 1) {
+    //   return (
+    //     <div className="max-w-full flex justify-center items-center border dark:border-zinc-800 rounded overflow-hidden hide-scrollbar hover:shadow-md">
+    //       <MediaCard resource={mediaResources[0]} />
+    //     </div>
+    //   );
+    // }
+
+    // const cards = resources.map((resource) => (
+    //   <SquareDiv
+    //     key={resource.name}
+    //     className="flex justify-center items-center border dark:border-zinc-900 rounded overflow-hidden hide-scrollbar hover:shadow-md"
+    //   >
+    //     <MediaCard resource={resource} />
+    //   </SquareDiv>
+    // ));
+
+    // if (resources.length === 2 || resources.length === 4) {
+    //   return <div className="w-full grid gap-2 grid-cols-2">{cards}</div>;
+    // }
+
+    // return <div className="w-full grid gap-2 grid-cols-2 sm:grid-cols-3">{cards}</div>;
   };
 
   const OtherList = ({ resources = [] }: { resources: Resource[] }) => {
